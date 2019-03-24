@@ -13,17 +13,31 @@ public class List_inChainOfNodes{
     /**
       @return the number of elements in this list
      */
-    // public int size() {
-    // }
-
+    public int size() {
+        Node current = headReference; 
+        int count = 0; 
+        while (current != null){ 
+            count++; 
+            current = current.getReferenceToNextNode(); 
+        } 
+        return count; 
+    } 
     
      /**
        @return a string representation of this list,
        format:
            # elements [element0,element1,element2,] 
       */
-    // public String toString() {
-    // }
+    public String toString() {
+		Node current = headReference; 
+        String output = "["; 
+        while (current != null){ 
+            output+= current.getCargo() + ",";
+            current = current.getReferenceToNextNode(); 
+        } 
+		output += "]";
+        return output; 
+    }
     
     
     /**
@@ -32,6 +46,8 @@ public class List_inChainOfNodes{
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean addAsHead( Object val) {
+		Node tempHead = headReference;
+		headReference = new Node(val, tempHead);
         return true;
      }
 }

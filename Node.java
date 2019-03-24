@@ -50,4 +50,9 @@ public class Node {
     public void setReferenceToNextNode( Node referenceToNextNode) {
 		this.referenceToNextNode = referenceToNextNode;
     }
+	
+	//[ADDED METHOD] cargoReference accessor for List_inChainOfNodes toString()
+	public Object getCargo() {
+		return cargoReference;
+    }
 }
