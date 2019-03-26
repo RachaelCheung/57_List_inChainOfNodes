@@ -26,5 +26,24 @@ public class UserOfList {
 		
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+						  
+		// test "get" method
+		System.out.println(list.get(0) + "... expecting S");
+		System.out.println(list.get(3) + "...expecting y");
+		
+		//test add method
+		list.set(0,"new");
+		list.set(2,"new2");
+		
+		System.out.println(list + "...expecting [new,t,new2,y,]");
+		
+		list.add(3,"add");
+		list.add(5,"end");
+		
+		System.out.println(list + "... expecting [new,t,new2,add,y,end,]");
+		
+		list.remove(5);
+		list.remove(2);
+		System.out.println(list + "... expecting [new,t,add,y,]");
     }
 }
