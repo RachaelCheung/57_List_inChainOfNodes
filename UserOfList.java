@@ -34,16 +34,19 @@ public class UserOfList {
 		//test add method
 		list.set(0,"new");
 		list.set(2,"new2");
+		list.set(3,"new3");
 		
-		System.out.println(list + "...expecting [new,t,new2,y,]");
+		System.out.println(list + "...expecting [new,t,new2,new3]");
 		
+		list.add(0,"start");
 		list.add(3,"add");
 		list.add(5,"end");
 		
-		System.out.println(list + "... expecting [new,t,new2,add,y,end,]");
+		System.out.println(list + "... expecting [new,t,new2,add,new3,end,]");
 		
 		list.remove(5);
 		list.remove(2);
-		System.out.println(list + "... expecting [new,t,add,y,]");
+		list.remove(0);
+		System.out.println(list + "... expecting [t,add,new3,]");
     }
 }

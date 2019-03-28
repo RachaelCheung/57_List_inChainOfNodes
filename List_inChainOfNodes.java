@@ -50,15 +50,17 @@ public class List_inChainOfNodes{
      }
 	 
 	 
-	 public void set(int index, Object val){
+	 public Object set(int index, Object val){
 		 Node tempNext = nodeAt(index+1);	
 		 Node newNode = new Node(val, tempNext);
 		 if (index != 0)
 			nodeAt(index-1).setReferenceToNextNode(newNode);
 		 else 
 			 headReference = newNode;
+		 return val;
 	 }
 	 
+	 //returns a list element (not a Node)
 	 public Object get(int index){
 		 return nodeAt(index).getCargo();
 	 }
@@ -72,22 +74,26 @@ public class List_inChainOfNodes{
 	 }
 	 
 	 public boolean remove (int index){
-		 Node tempNode = nodeAt(index+1);
-		 Node thisNode = nodeAt(index-1);
-		 thisNode.setReferenceToNextNode(tempNode);
+		 Node nextNode = nodeAt(index+1);
+		 if (index != 0){
+			Node thisNode = nodeAt(index-1);
+			thisNode.setReferenceToNextNode(nextNode);
+		}	
+		 else
+			 headReference = nextNode;
 		 return true;
 	 }
 	 
-	 //helper function that returns Node at given index
+	 // iteration-through-chain 
 	 private Node nodeAt(int index){
 		 Node current = headReference;
-		 int nodeIndex = 0;
-		 while (current != null){
-			 if (nodeIndex == index)
-				 return current;
-			 current = current.getReferenceToNextNode();
-			 nodeIndex++;
-		 }
+		 
+		 //iterates through chain with empty for loop
+		 for (int nodeIndex = 0; 
+				nodeIndex < index; 
+				nodeIndex++, current = current.getReferenceToNextNode())
+			{}
+
 		 return current;
 	 }
 	 
